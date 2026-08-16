@@ -30,20 +30,22 @@ public class AgendamentoController {
     }
 
     @PostMapping("/{id}/reagendar")
-    @PreAuthorize("hasRole('CLIENTE')")
+    @PreAuthorize("hasAnyRole('CLIENTE', 'GERENTE')")
     public ResponseEntity<AgendamentoResponse> reagendar(
             @PathVariable Long id,
             @Valid @RequestBody ReagendamentoRequest request,
             @AuthenticationPrincipal AutenticadoPrincipal principal) {
-        return ResponseEntity.ok(agendamentoService.reagendar(id, principal.getId(), request));
+        String role = principal.getAuthorities().iterator().next().getAuthority();
+        return ResponseEntity.ok(agendamentoService.reagendar(id, principal.getId(), role, request));
     }
 
     @PostMapping("/{id}/cancelar")
-    @PreAuthorize("hasRole('CLIENTE')")
+    @PreAuthorize("hasAnyRole('CLIENTE', 'GERENTE')")
     public ResponseEntity<Void> cancelar(
             @PathVariable Long id,
             @AuthenticationPrincipal AutenticadoPrincipal principal) {
-        agendamentoService.cancelar(id, principal.getId());
+        String role = principal.getAuthorities().iterator().next().getAuthority();
+        agendamentoService.cancelar(id, principal.getId(), role);
         return ResponseEntity.noContent().build();
     }
 
@@ -65,5 +67,17 @@ public class AgendamentoController {
     @PreAuthorize("hasRole('GERENTE') or (hasRole('CLIENTE') and #idCliente == authentication.principal.id)")
     public ResponseEntity<List<AgendamentoResponse>> listarPorCliente(@PathVariable Long idCliente) {
         return ResponseEntity.ok(agendamentoService.listarPorCliente(idCliente));
+    }
+
+    @GetMapping("/vistoriador/{idFuncionario}")
+    @PreAuthorize("hasRole('GERENTE') or (hasRole('VISTORIADOR') and #idFuncionario == authentication.principal.id)")
+    public ResponseEntity<List<AgendamentoResponse>> listarPorFuncionario(@PathVariable Long idFuncionario) {
+        return ResponseEntity.ok(agendamentoService.listarPorFuncionario(idFuncionario));
+    }
+
+    @GetMapping("/pendentes")
+    @PreAuthorize("hasRole('GERENTE')")
+    public ResponseEntity<List<AgendamentoResponse>> listarPendentes() {
+        return ResponseEntity.ok(agendamentoService.listarPendentes());
     }
 }

@@ -25,4 +25,6 @@ public interface AgendamentoRepository extends JpaRepository<Agendamento, Long> 
 
     long countByStatusAgendamentoAndDataAgendamentoBetween(
             Agendamento.StatusAgendamento status, LocalDate inicio, LocalDate fim);
+
+    List<Agendamento> findByStatusAgendamento(Agendamento.StatusAgendamento status);
 }

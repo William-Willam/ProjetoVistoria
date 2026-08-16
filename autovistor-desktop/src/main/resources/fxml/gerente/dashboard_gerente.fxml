@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="br.com.william.autovistordesktop.view.gerente.DashboardGerenteController">
+
+    <left>
+        <VBox spacing="5.0" style="-fx-background-color: #2c3e50;" prefWidth="220.0">
+            <padding>
+                <Insets top="20.0" right="10.0" bottom="20.0" left="10.0"/>
+            </padding>
+            <Label text="AutoVistor" style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;"/>
+            <Label text="Gerente" style="-fx-text-fill: #bdc3c7; -fx-font-size: 12px;"/>
+
+            <Button fx:id="botaoFuncionarios" text="Gestão de Funcionários" maxWidth="Infinity"/>
+            <Button fx:id="botaoDesignarVistoriador" text="Designar Vistoriador" maxWidth="Infinity"/>
+            <Button fx:id="botaoFinanceiro" text="Financeiro" maxWidth="Infinity"/>
+            <Button fx:id="botaoRelatorios" text="Relatórios" maxWidth="Infinity"/>
+            <Button fx:id="botaoClientesVeiculos" text="Clientes e Veículos" maxWidth="Infinity"/>
+
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button fx:id="botaoSair" text="Sair" maxWidth="Infinity" style="-fx-background-color: #c0392b; -fx-text-fill: white;"/>
+        </VBox>
+    </left>
+
+    <center>
+        <StackPane fx:id="areaConteudo"/>
+    </center>
+
+</BorderPane>

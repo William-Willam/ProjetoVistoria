@@ -12,6 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ClienteService {
@@ -37,6 +39,10 @@ public class ClienteService {
 
         Cliente salvo = clienteRepository.save(cliente);
         return toResponse(salvo);
+    }
+
+    public List<ClienteResponse> listarTodos() {
+        return clienteRepository.findAll().stream().map(this::toResponse).toList();
     }
 
     public ClienteResponse buscarPorId(Long id) {

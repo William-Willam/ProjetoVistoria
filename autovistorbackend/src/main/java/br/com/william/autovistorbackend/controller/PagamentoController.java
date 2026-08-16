@@ -1,5 +1,6 @@
 package br.com.william.autovistorbackend.controller;
 
+import br.com.william.autovistorbackend.dto.BoletoDetalhadoResponse;
 import br.com.william.autovistorbackend.dto.PagamentoCadastroRequest;
 import br.com.william.autovistorbackend.dto.PagamentoResponse;
 import br.com.william.autovistorbackend.service.PagamentoService;
@@ -9,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -29,5 +32,11 @@ public class PagamentoController {
     @PreAuthorize("hasRole('GERENTE')")
     public ResponseEntity<PagamentoResponse> confirmarPagamentoBoleto(@PathVariable Long idPagamento) {
         return ResponseEntity.ok(pagamentoService.confirmarPagamentoBoleto(idPagamento));
+    }
+
+    @GetMapping("/pagamentos/boletos-pendentes")
+    @PreAuthorize("hasRole('GERENTE')")
+    public ResponseEntity<List<BoletoDetalhadoResponse>> listarBoletosPendentes() {
+        return ResponseEntity.ok(pagamentoService.listarBoletosPendentes());
     }
 }

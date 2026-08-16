@@ -24,7 +24,6 @@ public class AgendamentoService {
     private final VeiculoRepository veiculoRepository;
     private final FuncionarioRepository funcionarioRepository;
 
-    // status que NÃO bloqueiam um novo agendamento no mesmo horário
     private static final List<Agendamento.StatusAgendamento> STATUS_IRRELEVANTES = List.of(
             Agendamento.StatusAgendamento.CANCELADO,
             Agendamento.StatusAgendamento.REAGENDADO
@@ -44,7 +43,6 @@ public class AgendamentoService {
         agendamento.setTipoVistoria(request.tipoVistoria());
         agendamento.setCliente(cliente);
         agendamento.setVeiculo(veiculo);
-        // funcionario fica null por enquanto — designado depois pelo Gerente
 
         Agendamento salvo = agendamentoRepository.save(agendamento);
         return toResponse(salvo);
@@ -66,9 +64,8 @@ public class AgendamentoService {
     }
 
     @Transactional
-    public AgendamentoResponse reagendar(Long idAgendamento, Long idClienteLogado, ReagendamentoRequest request) {
-        Agendamento agendamento = agendamentoRepository.findByIdAndClienteId(idAgendamento, idClienteLogado)
-                .orElseThrow(() -> new RecursoNaoEncontradoException("Agendamento não encontrado."));
+    public AgendamentoResponse reagendar(Long idAgendamento, Long idUsuarioLogado, String role, ReagendamentoRequest request) {
+        Agendamento agendamento = buscarAgendamentoComPermissao(idAgendamento, idUsuarioLogado, role);
 
         if (agendamento.getFuncionario() != null) {
             validarDisponibilidade(request.novaData(), request.novaHora(), agendamento.getFuncionario().getId(), idAgendamento);
@@ -82,10 +79,8 @@ public class AgendamentoService {
     }
 
     @Transactional
-    public void cancelar(Long idAgendamento, Long idClienteLogado) {
-        Agendamento agendamento = agendamentoRepository.findByIdAndClienteId(idAgendamento, idClienteLogado)
-                .orElseThrow(() -> new RecursoNaoEncontradoException("Agendamento não encontrado."));
-
+    public void cancelar(Long idAgendamento, Long idUsuarioLogado, String role) {
+        Agendamento agendamento = buscarAgendamentoComPermissao(idAgendamento, idUsuarioLogado, role);
         agendamento.setStatusAgendamento(Agendamento.StatusAgendamento.CANCELADO);
     }
 
@@ -97,7 +92,26 @@ public class AgendamentoService {
         return agendamentoRepository.findByClienteId(idCliente).stream().map(this::toResponse).toList();
     }
 
-    // ================== O CORAÇÃO DA CORREÇÃO ==================
+    public List<AgendamentoResponse> listarPorFuncionario(Long idFuncionario) {
+        return agendamentoRepository.findByFuncionarioId(idFuncionario).stream().map(this::toResponse).toList();
+    }
+
+    public List<AgendamentoResponse> listarPendentes() {
+        return agendamentoRepository.findByStatusAgendamento(Agendamento.StatusAgendamento.PENDENTE)
+                .stream().map(this::toResponse).toList();
+    }
+
+    // ================== BUSCA COM CONTROLE DE PERMISSÃO ==================
+    private Agendamento buscarAgendamentoComPermissao(Long idAgendamento, Long idUsuarioLogado, String role) {
+        if ("ROLE_GERENTE".equals(role)) {
+            return agendamentoRepository.findById(idAgendamento)
+                    .orElseThrow(() -> new RecursoNaoEncontradoException("Agendamento não encontrado."));
+        }
+        return agendamentoRepository.findByIdAndClienteId(idAgendamento, idUsuarioLogado)
+                .orElseThrow(() -> new RecursoNaoEncontradoException("Agendamento não encontrado."));
+    }
+
+    // ================== CHECAGEM DE CONFLITO DE HORÁRIO ==================
     private void validarDisponibilidade(LocalDate data, LocalTime hora, Long idFuncionario, Long idAgendamentoIgnorar) {
         boolean conflito = agendamentoRepository
                 .existsByDataAgendamentoAndHoraAndFuncionarioIdAndStatusAgendamentoNotIn(

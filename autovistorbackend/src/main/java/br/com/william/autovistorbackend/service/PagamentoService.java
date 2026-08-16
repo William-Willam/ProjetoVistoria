@@ -1,5 +1,6 @@
 package br.com.william.autovistorbackend.service;
 
+import br.com.william.autovistorbackend.dto.BoletoDetalhadoResponse;
 import br.com.william.autovistorbackend.dto.PagamentoCadastroRequest;
 import br.com.william.autovistorbackend.dto.PagamentoResponse;
 import br.com.william.autovistorbackend.entity.*;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -120,5 +122,14 @@ public class PagamentoService {
                 p.getId(), p.getFormaPagamento(), p.getStatusPagamento(),
                 p.getValor(), p.getDataPagamento(), p.getVistoria().getId()
         );
+    }
+
+    @Transactional(readOnly = true)
+    public List<BoletoDetalhadoResponse> listarBoletosPendentes() {
+        return boletoRepository.findByStatus(Boleto.Status.EMITIDO).stream()
+                .map(b -> new BoletoDetalhadoResponse(
+                        b.getId(), b.getPagamento().getId(), b.getCodigoBarras(),
+                        b.getDataVencimento(), b.getPagamento().getValor()))
+                .toList();
     }
 }

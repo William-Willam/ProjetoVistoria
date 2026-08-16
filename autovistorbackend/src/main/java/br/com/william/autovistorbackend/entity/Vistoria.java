@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "vistoria")
@@ -36,6 +38,12 @@ public class Vistoria {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_funcionario", nullable = false)
     private Funcionario funcionario;
+
+    @OneToMany(mappedBy = "vistoria", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ItemVistoria> itens = new ArrayList<>();
+
+    @OneToMany(mappedBy = "vistoria", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<FotoVistoria> fotos = new ArrayList<>();
 
     public enum Resultado {
         APROVADO,

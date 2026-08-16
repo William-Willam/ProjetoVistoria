@@ -12,6 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class FuncionarioService {
@@ -75,5 +77,9 @@ public class FuncionarioService {
 
     private FuncionarioResponse toResponse(Funcionario f) {
         return new FuncionarioResponse(f.getId(), f.getNome(), f.getEmail(), f.getMatricula(), f.getCargo(), f.isAtivo());
+    }
+
+    public List<FuncionarioResponse> listarTodos() {
+        return funcionarioRepository.findAll().stream().map(this::toResponse).toList();
     }
 }

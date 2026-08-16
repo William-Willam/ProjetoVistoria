@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane fitToWidth="true" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="br.com.william.autovistordesktop.view.gerente.ClientesVeiculosController">
+    <VBox spacing="20.0">
+        <padding>
+            <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+        </padding>
+
+        <Label text="Cadastrar Cliente" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        <GridPane hgap="10" vgap="10">
+            <Label text="Nome:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="campoNomeCliente" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label text="CPF:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="campoCpfCliente" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label text="Telefone:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="campoTelefoneCliente" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Label text="E-mail:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <TextField fx:id="campoEmailCliente" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            <Label text="Senha:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <PasswordField fx:id="campoSenhaCliente" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+        </GridPane>
+        <Button fx:id="botaoSalvarCliente" text="Cadastrar Cliente" style="-fx-background-color: #27ae60; -fx-text-fill: white;"/>
+
+        <Separator/>
+
+        <Label text="Cadastrar Veículo" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        <GridPane hgap="10" vgap="10">
+            <Label text="Cliente dono:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <HBox spacing="10" GridPane.rowIndex="0" GridPane.columnIndex="1">
+                <ComboBox fx:id="comboClienteVeiculo" prefWidth="250"/>
+                <Button fx:id="botaoAtualizarClientes" text="Atualizar lista"/>
+            </HBox>
+            <Label text="Placa:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="campoPlaca" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label text="Tipo:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="campoTipoVeiculo" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Label text="Nome do veículo:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <TextField fx:id="campoNomeVeiculo" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            <Label text="Modelo:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <TextField fx:id="campoModelo" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            <Label text="Ano:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <TextField fx:id="campoAno" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+            <Label text="Chassi:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+            <TextField fx:id="campoChassi" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+            <Label text="Observações:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+            <TextArea fx:id="campoObservacoesVeiculo" prefRowCount="2" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+        </GridPane>
+        <Button fx:id="botaoSalvarVeiculo" text="Cadastrar Veículo" style="-fx-background-color: #27ae60; -fx-text-fill: white;"/>
+    </VBox>
+</ScrollPane>

@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/funcionarios")
 @RequiredArgsConstructor
@@ -41,5 +43,10 @@ public class FuncionarioController {
             @Valid @RequestBody DesligamentoRequest request) {
         funcionarioService.desligar(id, request);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping
+    public ResponseEntity<List<FuncionarioResponse>> listarTodos() {
+        return ResponseEntity.ok(funcionarioService.listarTodos());
     }
 }

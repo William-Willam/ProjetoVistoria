@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/clientes")
 @RequiredArgsConstructor
@@ -36,5 +38,11 @@ public class ClienteController {
             @PathVariable Long id,
             @Valid @RequestBody ClienteAtualizacaoRequest request) {
         return ResponseEntity.ok(clienteService.atualizar(id, request));
+    }
+
+    @GetMapping("/todos")
+    @PreAuthorize("hasRole('GERENTE')")
+    public ResponseEntity<List<ClienteResponse>> listarTodos() {
+        return ResponseEntity.ok(clienteService.listarTodos());
     }
 }
