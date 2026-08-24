@@ -23,7 +23,7 @@
             <Label text="Senha:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
             <PasswordField fx:id="campoSenhaCliente" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
         </GridPane>
-        <Button fx:id="botaoSalvarCliente" text="Cadastrar Cliente" style="-fx-background-color: #27ae60; -fx-text-fill: white;"/>
+        <Button fx:id="botaoSalvarCliente" text="Cadastrar Cliente" styleClass="botao-sucesso"/>
 
         <Separator/>
 
@@ -32,7 +32,7 @@
             <Label text="Cliente dono:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
             <HBox spacing="10" GridPane.rowIndex="0" GridPane.columnIndex="1">
                 <ComboBox fx:id="comboClienteVeiculo" prefWidth="250"/>
-                <Button fx:id="botaoAtualizarClientes" text="Atualizar lista"/>
+                <Button fx:id="botaoAtualizarClientes" text="Atualizar lista" styleClass="botao-secundario"/>
             </HBox>
             <Label text="Placa:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
             <TextField fx:id="campoPlaca" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
@@ -49,6 +49,6 @@
             <Label text="Observações:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
             <TextArea fx:id="campoObservacoesVeiculo" prefRowCount="2" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
         </GridPane>
-        <Button fx:id="botaoSalvarVeiculo" text="Cadastrar Veículo" style="-fx-background-color: #27ae60; -fx-text-fill: white;"/>
+        <Button fx:id="botaoSalvarVeiculo" text="Cadastrar Veículo" styleClass="botao-sucesso"/>
     </VBox>
 </ScrollPane>

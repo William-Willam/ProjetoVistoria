@@ -34,9 +34,9 @@
             <padding>
                 <Insets top="15.0"/>
             </padding>
-            <Button fx:id="botaoAtualizar" text="Atualizar Lista"/>
-            <Button fx:id="botaoRegistrarVistoria" text="Registrar Vistoria" disable="true"/>
-            <Button fx:id="botaoBaixarLaudo" text="Baixar Laudo" disable="true"/>
+            <Button fx:id="botaoAtualizar" text="Atualizar Lista" styleClass="botao-secundario"/>
+            <Button fx:id="botaoRegistrarVistoria" text="Registrar Vistoria" disable="true" styleClass="botao-primario"/>
+            <Button fx:id="botaoBaixarLaudo" text="Baixar Laudo" disable="true" styleClass="botao-secundario"/>
         </HBox>
     </bottom>
 </BorderPane>

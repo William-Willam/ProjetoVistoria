@@ -22,8 +22,8 @@
                 <DatePicker fx:id="campoDataInicio"/>
                 <Label text="Até:"/>
                 <DatePicker fx:id="campoDataFim"/>
-                <Button fx:id="botaoOperacional" text="Relatório Operacional"/>
-                <Button fx:id="botaoFinanceiro" text="Relatório Financeiro"/>
+                <Button fx:id="botaoOperacional" text="Relatório Operacional" styleClass="botao-primario"/>
+                <Button fx:id="botaoFinanceiro" text="Relatório Financeiro" styleClass="botao-primario"/>
             </HBox>
         </VBox>
     </top>

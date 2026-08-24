@@ -33,13 +33,25 @@ public class NavigationService {
             Scene scene = stagePrincipal.getScene();
             if (scene == null) {
                 scene = new Scene(root);
+                scene.getStylesheets().add(getClass().getResource("/css/styles.css").toExternalForm());
                 stagePrincipal.setScene(scene);
             } else {
                 scene.setRoot(root);
             }
 
             stagePrincipal.setTitle(titulo);
-            stagePrincipal.sizeToScene();
+
+            boolean telaDeLogin = caminhoFxml.contains("/login/");
+
+            if (telaDeLogin) {
+                stagePrincipal.setMaximized(false);
+                stagePrincipal.setResizable(false);
+                stagePrincipal.sizeToScene();
+                stagePrincipal.centerOnScreen();
+            } else {
+                stagePrincipal.setResizable(true);
+                stagePrincipal.setMaximized(true);
+            }
 
         } catch (IOException e) {
             throw new RuntimeException("Erro ao carregar tela: " + caminhoFxml, e);

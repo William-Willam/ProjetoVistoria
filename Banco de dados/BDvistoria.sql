@@ -9,5 +9,5 @@ select * from agendamento;
 select * from nota_fiscal;
 select * from lancamento_caixa;
 
-SELECT * FROM desligamento_funcionario;
-SELECT * FROM funcionario WHERE id_funcionario = 2;
+SELECT id_vistoria FROM vistoria WHERE id_agendamento = 6;
+DELETE FROM laudo WHERE id_vistoria = 4;

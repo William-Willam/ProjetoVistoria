@@ -33,8 +33,8 @@
             <padding>
                 <Insets top="15.0"/>
             </padding>
-            <Button fx:id="botaoAtualizar" text="Atualizar Lista"/>
-            <Button fx:id="botaoConfirmar" text="Confirmar Pagamento" disable="true"/>
+            <Button fx:id="botaoAtualizar" text="Atualizar Lista" styleClass="botao-secundario"/>
+            <Button fx:id="botaoConfirmar" text="Confirmar Pagamento" disable="true" styleClass="botao-sucesso"/>
         </HBox>
     </bottom>
 </BorderPane>

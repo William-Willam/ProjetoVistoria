@@ -35,8 +35,8 @@
             <padding>
                 <Insets top="15.0"/>
             </padding>
-            <Button fx:id="botaoAtualizar" text="Atualizar Lista"/>
-            <Button fx:id="botaoDesignar" text="Designar Vistoriador" disable="true"/>
+            <Button fx:id="botaoAtualizar" text="Atualizar Lista" styleClass="botao-secundario"/>
+            <Button fx:id="botaoDesignar" text="Designar Vistoriador" disable="true" styleClass="botao-primario"/>
         </HBox>
     </bottom>
 </BorderPane>

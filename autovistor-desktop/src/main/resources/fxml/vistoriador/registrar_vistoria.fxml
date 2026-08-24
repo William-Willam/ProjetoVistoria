@@ -36,14 +36,14 @@
                 </columns>
             </TableView>
             <HBox spacing="10.0">
-                <Button fx:id="botaoAdicionarItem" text="+ Adicionar item livre"/>
-                <Button fx:id="botaoRemoverItem" text="Remover item selecionado" disable="true"/>
+                <Button fx:id="botaoAdicionarItem" text="+ Adicionar item livre" styleClass="botao-secundario"/>
+                <Button fx:id="botaoRemoverItem" text="Remover item selecionado" disable="true" styleClass="botao-perigo"/>
             </HBox>
 
 
             <Label text="Fotos" style="-fx-font-weight: bold;"/>
             <HBox spacing="10.0" alignment="CENTER_LEFT">
-                <Button fx:id="botaoAdicionarFoto" text="Selecionar Fotos..."/>
+                <Button fx:id="botaoAdicionarFoto" text="Selecionar Fotos..." styleClass="botao-secundario"/>
                 <Label fx:id="labelFotosSelecionadas" text="Nenhuma foto selecionada"/>
             </HBox>
 
@@ -62,8 +62,8 @@
             <BorderPane.margin>
                 <Insets top="15.0"/>
             </BorderPane.margin>
-            <Button fx:id="botaoCancelar" text="Cancelar"/>
-            <Button fx:id="botaoSalvar" text="Salvar Vistoria" style="-fx-background-color: #27ae60; -fx-text-fill: white;"/>
+            <Button fx:id="botaoCancelar" text="Cancelar" styleClass="botao-secundario"/>
+            <Button fx:id="botaoSalvar" text="Salvar Vistoria" styleClass="botao-sucesso"/>
         </HBox>
     </bottom>
 </BorderPane>

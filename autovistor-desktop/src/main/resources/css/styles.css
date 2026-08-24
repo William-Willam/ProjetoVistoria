@@ -1,0 +1,204 @@
+/* ==========================================================
+   AutoVistor — Design System
+   ========================================================== */
+
+* {
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+/* ---------- Paleta de cores ---------- */
+.root {
+    -cor-primaria: #2c3e50;      /* sidebar, títulos */
+    -cor-primaria-clara: #34495e;
+    -cor-acento: #3498db;         /* ações principais */
+    -cor-acento-hover: #2980b9;
+    -cor-sucesso: #27ae60;
+    -cor-sucesso-hover: #219150;
+    -cor-perigo: #e74c3c;
+    -cor-perigo-hover: #c0392b;
+    -cor-fundo: #f5f6fa;
+    -cor-texto: #2c3e50;
+    -cor-texto-secundario: #7f8c8d;
+    -cor-borda: #dfe4ea;
+
+    -fx-background-color: -cor-fundo;
+}
+
+/* ---------- Tipografia ---------- */
+.titulo-pagina {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -cor-texto;
+}
+
+.subtitulo {
+    -fx-font-size: 14px;
+    -fx-text-fill: -cor-texto-secundario;
+}
+
+.label-campo {
+    -fx-font-size: 13px;
+    -fx-text-fill: -cor-texto;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+    -fx-background-color: -cor-primaria;
+}
+
+.sidebar-titulo {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.sidebar-subtitulo {
+    -fx-text-fill: #bdc3c7;
+    -fx-font-size: 12px;
+}
+
+.sidebar-botao {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ecf0f1;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10 14;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.sidebar-botao:hover {
+    -fx-background-color: -cor-primaria-clara;
+}
+
+.sidebar-botao-ativo {
+    -fx-background-color: -cor-acento;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.sidebar-botao-sair {
+    -fx-background-color: -cor-perigo;
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-padding: 10 14;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.sidebar-botao-sair:hover {
+    -fx-background-color: -cor-perigo-hover;
+}
+
+/* ---------- Botões de ação ---------- */
+.botao-primario {
+    -fx-background-color: -cor-acento;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 20;
+    -fx-cursor: hand;
+}
+.botao-primario:hover { -fx-background-color: -cor-acento-hover; }
+
+.botao-sucesso {
+    -fx-background-color: -cor-sucesso;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 20;
+    -fx-cursor: hand;
+}
+.botao-sucesso:hover { -fx-background-color: -cor-sucesso-hover; }
+
+.botao-perigo {
+    -fx-background-color: -cor-perigo;
+    -fx-text-fill: white;
+    -fx-background-radius: 6;
+    -fx-padding: 8 20;
+    -fx-cursor: hand;
+}
+.botao-perigo:hover { -fx-background-color: -cor-perigo-hover; }
+
+.botao-secundario {
+    -fx-background-color: white;
+    -fx-text-fill: -cor-texto;
+    -fx-border-color: -cor-borda;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8 20;
+    -fx-cursor: hand;
+}
+.botao-secundario:hover { -fx-background-color: -cor-fundo; }
+
+/* ---------- Cards ---------- */
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-color: -cor-borda;
+    -fx-border-radius: 10;
+    -fx-padding: 20;
+}
+
+/* ---------- Tabelas ---------- */
+.table-view {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-border-color: -cor-borda;
+    -fx-border-radius: 8;
+}
+.table-view .column-header-background {
+    -fx-background-color: -cor-primaria;
+    -fx-background-radius: 8 8 0 0;
+}
+.table-view .column-header-background .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+.table-row-cell:odd {
+    -fx-background-color: #fafbfc;
+}
+.table-row-cell:selected {
+    -fx-background-color: derive(-cor-acento, 70%);
+}
+
+/* ---------- Campos de formulário ---------- */
+.text-field, .text-area, .combo-box, .password-field {
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-border-color: -cor-borda;
+    -fx-padding: 6;
+}
+.text-field:focused, .text-area:focused, .combo-box:focused {
+    -fx-border-color: -cor-acento;
+}
+
+.area-conteudo {
+    -fx-padding: 24;
+}
+
+
+.login-painel-marca {
+    -fx-background-color: -cor-primaria;
+}
+.login-marca-titulo {
+    -fx-text-fill: white;
+    -fx-font-size: 34px;
+    -fx-font-weight: bold;
+}
+.login-marca-subtitulo {
+    -fx-text-fill: #bdc3c7;
+    -fx-font-size: 14px;
+}
+.login-painel-formulario {
+    -fx-background-color: white;
+}
+.login-titulo {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -cor-texto;
+}
+.login-subtitulo {
+    -fx-font-size: 13px;
+    -fx-text-fill: -cor-texto-secundario;
+}

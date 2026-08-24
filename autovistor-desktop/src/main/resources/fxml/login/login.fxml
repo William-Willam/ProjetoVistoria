@@ -4,24 +4,56 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="15.0" xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
+<HBox prefWidth="900.0" prefHeight="560.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
       fx:controller="br.com.william.autovistordesktop.view.login.LoginController">
-    <padding>
-        <Insets top="40.0" right="40.0" bottom="40.0" left="40.0"/>
-    </padding>
 
-    <Label text="AutoVistor — Login" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+    <VBox alignment="CENTER" prefWidth="340.0" spacing="12.0" styleClass="login-painel-marca">
+        <Label text="AutoVistor" styleClass="login-marca-titulo"/>
+        <Label text="Gestão inteligente de vistorias veiculares" styleClass="login-marca-subtitulo"
+               wrapText="true" maxWidth="240.0" textAlignment="CENTER"/>
+    </VBox>
 
-    <Label text="E-mail:"/>
-    <TextField fx:id="campoEmail" promptText="seu@email.com"/>
+    <VBox alignment="CENTER" spacing="16.0" styleClass="login-painel-formulario" HBox.hgrow="ALWAYS">
+        <padding>
+            <Insets left="60.0" right="60.0"/>
+        </padding>
 
-    <Label text="Senha:"/>
-    <PasswordField fx:id="campoSenha" promptText="Senha"/>
+        <ImageView fitWidth="220.0" preserveRatio="true">
+            <Image url="@/images/logo.png"/>
+        </ImageView>
 
-    <Button fx:id="botaoEntrar" text="Entrar" onAction="#handleLogin"/>
+        <Label text="Bem-vindo de volta" styleClass="login-titulo">
+            <VBox.margin>
+                <Insets top="10.0"/>
+            </VBox.margin>
+        </Label>
+        <Label text="Entre com sua conta para continuar" styleClass="login-subtitulo"/>
 
-    <Label fx:id="labelErro" style="-fx-text-fill: red;"/>
-</VBox>
+        <VBox spacing="6.0" maxWidth="320.0">
+            <VBox.margin>
+                <Insets top="10.0"/>
+            </VBox.margin>
+            <Label text="E-mail" styleClass="label-campo"/>
+            <TextField fx:id="campoEmail" promptText="seu@email.com"/>
+        </VBox>
+
+        <VBox spacing="6.0" maxWidth="320.0">
+            <Label text="Senha" styleClass="label-campo"/>
+            <PasswordField fx:id="campoSenha" promptText="Senha"/>
+        </VBox>
+
+        <Button fx:id="botaoEntrar" text="Entrar" onAction="#handleLogin" styleClass="botao-primario" maxWidth="320.0">
+            <VBox.margin>
+                <Insets top="8.0"/>
+            </VBox.margin>
+        </Button>
+
+        <Label fx:id="labelErro" style="-fx-text-fill: red;"/>
+    </VBox>
+
+</HBox>

@@ -31,6 +31,13 @@ public abstract class DashboardBaseController {
         }
     }
 
+    protected void marcarBotaoAtivo(Button botaoAtivo, Button... todosOsBotoes) {
+        for (Button botao : todosOsBotoes) {
+            botao.getStyleClass().remove("sidebar-botao-ativo");
+        }
+        botaoAtivo.getStyleClass().add("sidebar-botao-ativo");
+    }
+
     private void fazerLogout() {
         Alert confirmacao = new Alert(Alert.AlertType.CONFIRMATION, "Deseja realmente sair?");
         confirmacao.showAndWait().filter(botao -> botao == ButtonType.OK).ifPresent(botao -> {

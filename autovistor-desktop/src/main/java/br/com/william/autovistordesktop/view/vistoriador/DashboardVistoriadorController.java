@@ -12,8 +12,13 @@ public class DashboardVistoriadorController extends DashboardBaseController {
     private void initialize() {
         configurarLogout();
 
-        botaoVistoriasDesignadas.setOnAction(e -> carregarTela("/fxml/vistoriador/vistorias_designadas.fxml"));
+        botaoVistoriasDesignadas.setOnAction(e -> selecionar());
 
+        selecionar();
+    }
+
+    private void selecionar() {
+        marcarBotaoAtivo(botaoVistoriasDesignadas, botaoVistoriasDesignadas);
         carregarTela("/fxml/vistoriador/vistorias_designadas.fxml");
     }
 }

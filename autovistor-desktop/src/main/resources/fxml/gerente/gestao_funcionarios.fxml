@@ -34,10 +34,10 @@
             <padding>
                 <Insets top="15.0"/>
             </padding>
-            <Button fx:id="botaoAtualizar" text="Atualizar Lista"/>
-            <Button fx:id="botaoNovoFuncionario" text="Novo Funcionário"/>
-            <Button fx:id="botaoDesligar" text="Desligar" disable="true"/>
-            <Button fx:id="botaoEditar" text="Editar" disable="true"/>
+            <Button fx:id="botaoAtualizar" text="Atualizar Lista" styleClass="botao-secundario"/>
+            <Button fx:id="botaoNovoFuncionario" text="Novo Funcionário" styleClass="botao-primario"/>
+            <Button fx:id="botaoEditar" text="Editar" disable="true" styleClass="botao-secundario"/>
+            <Button fx:id="botaoDesligar" text="Desligar" disable="true" styleClass="botao-perigo"/>
         </HBox>
     </bottom>
 </BorderPane>
